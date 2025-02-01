@@ -1,3 +1,5 @@
+const ul = document.querySelector('.gallery');
+
 const images = [
   {
     url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
@@ -24,3 +26,26 @@ const images = [
     alt: "Lighthouse Coast Sea",
   }
 ];
+
+const updImages = images.map(image => {
+  const { url, ...rest } = image;
+  return { src: url, ...rest };
+}
+);
+
+updImages.forEach(image => {
+  const li = document.createElement('li');
+  const img = document.createElement('img');
+  li.classList.add('li-class');
+  img.classList.add('img-class');
+
+  img.src = image.src;
+  img.alt = image.alt;
+
+  ul.appendChild(li);
+  li.appendChild(img);
+}
+)
+console.log(ul)
+
+
