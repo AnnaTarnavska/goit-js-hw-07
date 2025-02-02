@@ -27,25 +27,26 @@ const images = [
   }
 ];
 
-const updImages = images.map(image => {
-  const { url, ...rest } = image;
-  return { src: url, ...rest };
-}
-);
+const fragment = document.createDocumentFragment();
 
-updImages.forEach(image => {
+images.forEach(image => {
   const li = document.createElement('li');
   const img = document.createElement('img');
+
   li.classList.add('li-class');
   img.classList.add('img-class');
 
-  img.src = image.src;
+  img.src = image.url;
   img.alt = image.alt;
 
-  ul.appendChild(li);
+  
   li.appendChild(img);
+  fragment.appendChild(li);
 }
-)
-console.log(ul)
+);
+
+ul.appendChild(fragment);
+
+console.log(ul);
 
 
